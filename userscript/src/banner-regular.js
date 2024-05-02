@@ -18,6 +18,8 @@
 // @match https://misskey.io/*
 // @include https://calckey.social/*
 // @match https://calckey.social/*
+// @include https://rawkuma.com/*
+// @match https://rawkuma.com/*
 // @include https://*
 // @match https://*
 // @connect pixiv.net
@@ -26,6 +28,7 @@
 // @connect twimg.com
 // @connect misskey.io
 // @connect misskeyusercontent.com
+// @connect rawkuma.com
 // @connect s3.arkjp.net
 // @connect nfs.pub
 // @connect calckey.social
