@@ -67,8 +67,19 @@ function gennerateConfig(input, output, banner) {
         compiler: 'solid',
       }),
       esbuild({
+        tsconfig: `tsconfig.json`,
         charset: 'utf8',
-        target: 'es2020',
+        target: 'esnext',
+        jsx: 'preserve', // default, or 'preserve'
+        jsxFactory: 'React.createElement',
+        jsxFragment: 'React.Fragment',
+        loaders: {
+          // Add .json files support
+          // require @rollup/plugin-commonjs
+          '.json': 'json',
+          // Enable JSX in .js files too
+          '.js': 'jsx',
+        },
       }),
       babel({
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
