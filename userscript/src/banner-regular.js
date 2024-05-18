@@ -14,6 +14,8 @@
 // @match https://www.pixiv.net/*
 // @include https://twitter.com/*
 // @match https://twitter.com/*
+// @include https://x.com/*
+// @match https://x.com/*
 // @include https://misskey.io/*
 // @match https://misskey.io/*
 // @include https://calckey.social/*

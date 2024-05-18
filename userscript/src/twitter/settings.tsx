@@ -144,7 +144,7 @@ function mount(): SettingsInjectorInstance {
 const settingsInjector: SettingsInjector = {
   match(url) {
     // https://twitter.com/settings/<tab>
-    return url.hostname.endsWith('twitter.com')
+    return (url.hostname.endsWith('twitter.com') || url.hostname.endsWith('x.com'))
       && (url.pathname === '/settings' || url.pathname.match(/^\/settings\//))
       && url.pathname !== '/settings/profile'
   },

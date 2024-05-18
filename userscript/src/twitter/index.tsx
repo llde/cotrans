@@ -534,9 +534,9 @@ function mount(): TranslatorInstance {
     canKeep(url) {
       switch (keepInstances()) {
         case 'until-reload':
-          return url.startsWith('https://twitter.com/')
+          return url.startsWith('https://twitter.com/') || url.startsWith('https://x.com/')
         case 'until-navigate':
-          return url.startsWith(`https://twitter.com/${mountAuthorId}`)
+          return url.startsWith(`https://twitter.com/${mountAuthorId}`) || url.startsWith(`https://x.com/${mountAuthorId}`)
         default:
           return false
       }
@@ -550,7 +550,7 @@ function mount(): TranslatorInstance {
 const translator: Translator = {
   // https://twitter.com/<user>/status/<id>
   match(url) {
-    return url.hostname.endsWith('twitter.com') && url.pathname.match(/\/status\//)
+    return (url.hostname.endsWith('twitter.com') || url.hostname.endsWith('x.com')) && url.pathname.match(/\/status\//)
   },
   mount,
 }
