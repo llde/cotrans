@@ -5,6 +5,7 @@ import glob from 'fast-glob'
 import { defineConfig } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace'
 import esbuild from 'rollup-plugin-esbuild'
 import icons from 'unplugin-icons/rollup'
 import yaml from '@rollup/plugin-yaml'
@@ -63,6 +64,12 @@ function gennerateConfig(input, output, banner) {
       nodeResolve(),
       commonjs(),
       yaml(),
+      replace({
+        preventAssignment : true,
+        values: {
+          'process.env.NODE_ENV': '"production"'
+        }
+      }),
       icons({
         compiler: 'solid',
       }),
