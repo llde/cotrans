@@ -9,7 +9,7 @@ import esbuild from 'rollup-plugin-esbuild'
 import icons from 'unplugin-icons/rollup'
 import yaml from '@rollup/plugin-yaml'
 import { babel } from '@rollup/plugin-babel'
-import info from './package.json' with { type: 'json' }
+import info from './package.json' assert { type: 'json' }
 
 function fileExists(filePath) {
   try {
