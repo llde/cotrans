@@ -153,7 +153,7 @@ function mount(): TranslatorInstance {
       return (
         <div
           style= { 'z-index:1'}
-          class={tw('absolute  flex top-1 left-2 transition-opacity duration-80')}
+          class={tw('absolute  flex top-1 left-2 transition-opacity duration-80 text-black')}
           classList={{
             [tw('opacity-100')]: fullOpacity(),
             [tw('opacity-30')]: !fullOpacity(),
@@ -180,10 +180,10 @@ function mount(): TranslatorInstance {
         >
           {/* button */}
           <div>
-            <div class={tw('relative rounded-full bg-white')}>
+            <div class={tw('relative rounded-full bg-white ')}>
               <Dynamic
                 component={translated() ? IconCarbonReset : IconCarbonTranslate}
-                class={tw('w-6 h-6 p-2 align-middle cursor-pointer')}
+                class={tw('w-6 h-6 p-2 align-middle cursor-pointer ')}
                 onClick={(e: MouseEvent) => {
                   e.stopPropagation()
                   e.preventDefault()
@@ -204,7 +204,7 @@ function mount(): TranslatorInstance {
                 }}
               />
               <div
-                class={tw('absolute inset-0 border-1 border-solid rounded-full pointer-events-none')}
+                class={tw('absolute inset-0 border-1 border-solid rounded-full pointer-events-none ')}
                 classList={{
                   [tw('border-x-gray-300 border-b-gray-300 border-t-gray-600 animate-spin')]: processing(),
                   [tw('border-gray-300')]: !processing(),
@@ -215,7 +215,7 @@ function mount(): TranslatorInstance {
           {/* advanced menu */}
           <div class={tw('-ml-2 mt-1.5')}>
             <Show when={!translateMounted()}>
-              <div class={tw('flex flex-col text-base px-1 border-1 border-solid border-gray-300 rounded-2xl bg-white cursor-default')}>
+              <div class={tw('flex flex-col  px-1 border-1 border-solid border-gray-300 rounded-2xl bg-white cursor-default')}>
                 <Switch>
                   <Match when={status()}>
                     <div class={tw('px-1')}>{status()}</div>
@@ -259,7 +259,7 @@ function mount(): TranslatorInstance {
                           <div>{title()}</div>
                           <div class={tw('relative px-1')}>
                             <select
-                              class={tw('w-full py-1 appearance-none text-black border-x-0 border-t-0 border-b border-solid border-gray-600 bg-transparent')}
+                              class={tw('w-full py-1 appearance-none  border-x-0 border-t-0 border-b border-solid border-gray-600 bg-transparent')}
                               value={opt()}
                               onChange={(e) => {
                                 // @ts-expect-error setOpt are incompatible with each other
