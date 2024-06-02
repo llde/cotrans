@@ -7,6 +7,7 @@ import { Dynamic, Match, Switch, render } from 'solid-js/web'
 import { tw } from '../utils/twind'
 import { t } from '../i18n'
 import type { Translator, TranslatorInstance } from '../main'
+
 import {
   detectResOptions,
   detectResOptionsMap,
@@ -56,9 +57,14 @@ function mount(): TranslatorInstance {
       .filter(node =>
         node.hasAttribute('srcset')
           || node.hasAttribute('data-trans')
-          || node.parentElement?.classList.contains('sc-1pkrz0g-1')
+          || node.parentElement?.classList.contains('sc-1pkrz0g-1') || node.parentElement?.classList.contains('sc-tmsb78-1')
           || node.parentElement?.classList.contains('gtm-expand-full-size-illust'),
       )
+  }
+
+  function isNodePresentationElement(node : HTMLImageElement){
+      if (node.parentElement?.classList.contains('sc-tmsb78-1')) return true
+      return false;
   }
 
   function rescanImages() {
@@ -120,7 +126,8 @@ function mount(): TranslatorInstance {
     const [transStatus, setTransStatus] = createSignal<Accessor<string | undefined>>(() => undefined)
 
     // create a translate botton
-    parent.style.position = 'relative'
+    if(!isNodePresentationElement(imageNode))
+        parent.style.position = 'relative'
     const container = document.createElement('div')
     parent.appendChild(container)
     onCleanup(() => {
