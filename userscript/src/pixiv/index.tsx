@@ -87,6 +87,7 @@ function mount(): TranslatorInstance {
         images.add(node)
       }
       catch (e) {
+        console.error(e)
         // ignore
       }
     }
@@ -151,7 +152,8 @@ function mount(): TranslatorInstance {
 
       return (
         <div
-          class={tw('absolute z-1 flex top-1 left-2 transition-opacity duration-80')}
+          style= { 'z-index:1'}
+          class={tw('absolute  flex top-1 left-2 transition-opacity duration-80')}
           classList={{
             [tw('opacity-100')]: fullOpacity(),
             [tw('opacity-30')]: !fullOpacity(),
