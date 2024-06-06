@@ -226,7 +226,7 @@ function mount(): TranslatorInstance {
           {/* advanced menu */}
           <div class={tw('-ml-2 mt-1.5')}>
             <Show when={!translateMounted()}>
-              <div class={tw('flex flex-col  px-1 border-1 border-solid border-gray-300 rounded-2xl bg-white cursor-default')}>
+              <div class={tw('flex flex-col  text-base px-1  border-1 border-solid border-gray-300 rounded-2xl bg-white cursor-default')}>
                 <Switch>
                   <Match when={status()}>
                     <div class={tw('px-1')}>{status()}</div>
