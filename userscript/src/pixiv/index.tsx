@@ -59,6 +59,9 @@ function mount(): TranslatorInstance {
           || node.hasAttribute('data-trans')
           || node.parentElement?.classList.contains('sc-1pkrz0g-1') || node.parentElement?.classList.contains('sc-tmsb78-1')
           || node.parentElement?.classList.contains('gtm-expand-full-size-illust'),
+              // gtm-expand-full-size-illust are preview  nodes
+              // sc-tmsb78-1 are big image presentation image
+              // sc-1pkrz0g-1 are big image (maybe also book horizontal view) with previews click div
       )
   }
 
@@ -66,6 +69,14 @@ function mount(): TranslatorInstance {
       if (node.parentElement?.classList.contains('sc-tmsb78-1')) return true
       return false;
   }
+//No need for now, Increase z-index seems enough
+ // function setZIndexForUpperClickForImageNode(node : HTMLImageElement){
+    // if (node.parentElement?.classList.contains('sc-1pkrz0g-1')) {
+      //This node seems to need special handling as the relative up click and down click nodes have more compex handling invovling setting z-index:1
+
+   //   }
+
+ // }
 
   function rescanImages() {
     const imageNodes = findImageNodes(document.body)
@@ -152,7 +163,7 @@ function mount(): TranslatorInstance {
 
       return (
         <div
-          style= { 'z-index:1'}
+          style= { 'z-index:2'}  // sc-1pkrz0g-1 nodes set z-index:1 for up and down click divs.
           class={tw('absolute  flex top-1 left-2 transition-opacity duration-80 text-black')}
           classList={{
             [tw('opacity-100')]: fullOpacity(),
